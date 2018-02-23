@@ -7,44 +7,44 @@ const Logger = require('../util/Logger');
  * @param {Discord.Member} member A message on Discord
  */
 module.exports = (client, member) => {
-	const {
-		modLogChannel,
-		welcomeEnabled,
-		welcomeMessage,
-		welcomeChannel
-	} = client.settings.get(member.guild.id);
+  const {
+    staffChannel,
+    welcomeEnabled,
+    welcomeMessage,
+    welcomeChannel
+  } = client.settings.get(member.guild.id);
 
-	// If welcome is off, don't proceed (don't welcome the user)
-	if (welcomeEnabled !== 'true') {
-		Logger.error('Welcome message is not enabled in bot configuration.');
-		return;
-	}
+  // If welcome is off, don't proceed (don't welcome the user)
+  if (welcomeEnabled !== 'true') {
+    Logger.error('Welcome message is not enabled in bot configuration.');
+    return;
+  }
 
-	if (!welcomeMessage) {
-		Logger.error('`welcomeMessage` is missing from bot configuration.');
-		return;
-	}
+  if (!welcomeMessage) {
+    Logger.error('`welcomeMessage` is missing from bot configuration.');
+    return;
+  }
 
-	if (!welcomeChannel) {
-		Logger.error('`welcomeChannel` is missing from bot configuration.');
-		return;
-	}
+  if (!welcomeChannel) {
+    Logger.error('`welcomeChannel` is missing from bot configuration.');
+    return;
+  }
 
-	if (!modLogChannel) {
-		Logger.error('`modLogChannel` is missing from bot configuration.');
-		return;
-	}
+  if (!staffChannel) {
+    Logger.error('`staffChannel` is missing from bot configuration.');
+    return;
+  }
 
-	// Replace the placeholders in the welcome message with the member's mention.
-	const message = welcomeMessage.replace("{{user}}", `${member}`);
+  // Replace the placeholders in the welcome message with the member's mention.
+  const message = welcomeMessage.replace("{{user}}", `${member}`);
 
-	member.guild.channels.find('name', modLogChannel)
-		.send(`User ${member} joined EDMP.`)
-		.catch(Logger.error);
+  member.guild.channels.find('name', staffChannel)
+    .send(`User ${member} joined Haywyre.`)
+    .catch(Logger.error);
 
-	// Send the welcome message to the welcome channel
-	// There's a place for more configs here.
-	member.guild.channels.find("name", welcomeChannel)
-		.send(message)
-		.catch(Logger.error);
+  // Send the welcome message to the welcome channel
+  // There's a place for more configs here.
+  member.guild.channels.find("name", welcomeChannel)
+    .send(message)
+    .catch(Logger.error);
 };
