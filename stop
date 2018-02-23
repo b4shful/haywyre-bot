@@ -1,0 +1,3 @@
+#!/bin/bash
+# Stop bot
+pm2 stop edmp-bot
