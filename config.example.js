@@ -134,7 +134,7 @@ const config = {
 
   roleIds: {},
 
-  emojis: {}
+  emoji: {}
 };
 
 module.exports = config;
