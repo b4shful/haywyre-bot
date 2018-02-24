@@ -14,10 +14,10 @@ const COOKIE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/311541291869798
  */
 const buildEmbed = (client, member) => new Discord.RichEmbed()
   .setTitle('Golden Cookie')
-  .setAuthor('EDMP Bot', client.user.avatarURL)
+  .setAuthor('WyreBot', client.user.avatarURL)
   .setColor(0x00ae86)
   .setDescription(`${member} has the golden cookie!`)
-  .setFooter('This bot was made by your caring EDMP overlords.')
+  .setFooter('This bot was ported to Haywyre by B4shful.')
   .setThumbnail(COOKIE_IMAGE_URL);
 
 /**
