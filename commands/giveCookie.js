@@ -180,7 +180,7 @@ exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: [],
-  permLevel: "Mentor"
+  permLevel: "Trusted"
 };
 
 exports.help = {

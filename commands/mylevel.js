@@ -7,7 +7,7 @@ exports.conf = {
   enabled: false,
   guildOnly: true,
   aliases: [],
-  permLevel: "Mentor"
+  permLevel: "Trusted"
 };
 
 exports.help = {

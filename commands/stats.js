@@ -18,7 +18,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "Staff"
+  permLevel: "Admin"
 };
 
 exports.help = {
