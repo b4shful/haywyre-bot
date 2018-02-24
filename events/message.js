@@ -20,9 +20,9 @@ module.exports = (client, message) => {
   // This should check for a channelID of 'all' or be changed to an array of channels.
   // TODO ^
   if (filter) {
-      if (message.channel.id == filter.help.channelID) {
+    if (message.channel.id == filter.help.channelID) {
 	  filter.run(client, message);
-      }
+    }
   }
     
   // For ease of use in commands and functions, we'll attach the settings
