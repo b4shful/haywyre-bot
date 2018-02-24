@@ -35,12 +35,12 @@ exports.run = (client, message) => {
   //Build Embed for message
   const buildEmbed = new Discord.RichEmbed()
     .setTitle('Members')
-    .setAuthor('EDMP Bot', client.user.avatarURL)
+    .setAuthor('BotWyre', client.user.avatarURL)
     .setColor(0x00ae86)
     .setDescription(`${onlineEmoji}Online Members: ${onlineUsers}\n\
 ${idleEmoji}Away Members: ${awayUsers}\n${offlineEmoji}Offline Members: ${offlineUsers}\n\
 ${dndEmoji}DND Members: ${dndUsers}`)
-    .setFooter('This bot was made by your caring EDMP overlords.');
+    .setFooter('This bot was ported to Haywyre by B4shful.');
     //.setThumbnail(COOKIE_IMAGE_URL);
 
   message.channel.send({embed: buildEmbed});
