@@ -108,14 +108,14 @@ module.exports = (client) => {
     
   client.unloadFilter = async (filterName) => {
     const filterKey = filterName.toLowerCase();
-      let filter;
+    let filter;
 
-      for([k,v] of client.filters) {
-        if (v.help.name === filterKey) {
-          filter = client.filters.get(k);
+    for ([k,v] of client.filters) {
+      if (v.help.name === filterKey) {
+        filter = client.filters.get(k);
 	  break;
-	}
       }
+    }
       
     if (!filter) return `The filter \`${filterName}\` doesn"t seem to exist. Try again!`;
   
@@ -158,10 +158,37 @@ module.exports = (client) => {
     return this.replace(/([^\W_]+[^\s-]*) */g, function(txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
   };    
   
+  // messageMonitor Function
+  client.messageMonitor = (client, message) => {
+    if (message.channel.type !== 'text') return;
+    if (message.content.startsWith(client.config.prefix)) return;
+    const score = client.messages.get(message.author.id) || { messages: 0, level: 0 };
+    score.messages++; 
+    console.log(score);
+    //Rounds score down to nearest 500 so that 1k messages is reached in 2 levels.
+    const currentLevel = (Math.floor(score.messages / 500));
+    if (score.level == currentLevel ) return;
+    if (score.level < 1) {
+      message.reply("You're halfway to becoming a regular!");
+      score.level = currentLevel;
+      client.messages.set(message.author.id, score);
+      return;
+    }
+    if (score.level <= 2) {
+      message.reply("You're now a regular, congratulations!");
+      score.level = currentLevel;
+      message.member.addRole(client.config.roleIds.Regular);
+      client.messages.set(message.author.id, score);
+      return;
+    }
+    client.messages.set(message.author.id, score);
+  };
+
+
   // <Array>.random() returns a single random element from an array
   // [1, 2, 3, 4, 5].random() can return 1, 2, 3, 4 or 5.
   Array.prototype.random = function() {
-    return this[Math.floor(Math.random() * this.length)]
+    return this[Math.floor(Math.random() * this.length)];
   };
 
   // `await client.wait(1000);` to "pause" for 1 second.
