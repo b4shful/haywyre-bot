@@ -7,6 +7,9 @@ module.exports = (client, message) => {
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
 
+  // Pass client and message objects to messageMonitor.
+  client.messageMonitor(client, message);
+
   // Grab the settings for this server from the PersistentCollection
   // If there is no guild, get default conf (DMs)
   const settings = message.guild
@@ -77,9 +80,8 @@ module.exports = (client, message) => {
   client.logger.cmd(`[CMD] ${client.config.permLevels.find(l => l.level === level).name} ${message.author.username} (${message.author.id}) ran command ${cmd.help.name}`);
   cmd.run(client, message, args, level);
 
-  
-  // After all is said and done... delete everything in collab-bro.
-  //if (message.channel.id === '414450318601093120') {
+  // After all is said and done... delete everything in shitposting.
+  //if (message.channel.id === '399187453736648714') {
   //  message.delete(0);
   //} 
 };
