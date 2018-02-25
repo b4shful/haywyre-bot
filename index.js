@@ -16,6 +16,10 @@ const EnmapLevel = require("enmap-level");
 // or `bot.something`, this is what we're refering to. Your client.
 const client = new Discord.Client();
 
+// Create new messages Enmap and attach to client.
+const messageProvider = new EnmapLevel({name: "messages"});
+client.messages = new Enmap({provider: messageProvider});
+
 // Here we load the config file that contains our token and our prefix values.
 const configPath = process.env.CONFIG_PATH || './config.js';
 client.config = require(configPath);
@@ -35,9 +39,6 @@ client.logger = require("./util/Logger");
 // Let's start by getting some useful functions that we'll use throughout
 // the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
-
-// Add database module.
-require('./modules/database')(client);
 
 // Aliases and commands are put in collections where they can be read from,
 // catalogued, listed, etc.
@@ -97,7 +98,9 @@ const init = async () => {
     client.levelCache[thisLevel.name] = thisLevel.level;
   }
 
-  // Here we login the client.
+ 
+
+  // Login the client.
   client.login(client.config.token);
 
 // End top-level async/await function.
