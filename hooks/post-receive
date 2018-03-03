@@ -1,7 +1,7 @@
 #!/bin/bash
 
-GIT_DIR=/home/bot/repo
-WORK_TREE=/home/bot/edmp-bot
+GIT_DIR=/home/haywyre-repo
+WORK_TREE=/home/haywyre-bot
 
 while read oldrev newrev ref
 do
