@@ -9,7 +9,7 @@ exports.run = async (client, message, args, level) => {// eslint-disable-line no
 
   message.reply(`The command \`${args[0]}\` has been reloaded`);
 };
-//test2
+//test
 exports.conf = {
   enabled: true,
   guildOnly: false,
