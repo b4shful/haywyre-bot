@@ -12,7 +12,7 @@ exports.conf = {
   aliases: [],
   permLevel: "Admin"
 };
-
+//test
 exports.help = {
   name: "reboot",
   category: "System",
