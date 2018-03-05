@@ -1,6 +1,6 @@
 # Haywyre Bot
 
-The Haywyre Discord bot was ported from [EDMP Bot](https://github.com/bueosseph/edmp-bot) of which B4shful is an administrator contributor.
+The Haywyre Discord bot was ported from [EDMP Bot](https://github.com/bueosseph/edmp-bot) of which B4shful is an administrator and contributor.
 Credit is given to both [Kerrang](https://github.com/bueosseph) and [AdmiralBumbleBee](https://admiralbumblebee.com) for their contributions.
 
 ## Dependencies
