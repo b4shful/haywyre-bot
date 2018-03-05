@@ -164,9 +164,11 @@ module.exports = (client) => {
     if (message.content.startsWith(client.config.prefix)) return;
     const score = client.messages.get(message.author.id) || { messages: 0, level: 0 };
     score.messages++; 
-    console.log(score);
+    //UNCOMMENT THE LINE BELOW TO DEBUG SCORE ISSUES
+    //console.log(score);
     //Rounds score down to nearest 500 so that 1k messages is reached in 2 levels.
     const currentLevel = (Math.floor(score.messages / 500));
+    //Yes, there are three if statements here. It's shoddy but it works.
     if (score.level == currentLevel ) {
       client.messages.set(message.author.id, score);
       return;
