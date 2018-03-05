@@ -167,7 +167,10 @@ module.exports = (client) => {
     console.log(score);
     //Rounds score down to nearest 500 so that 1k messages is reached in 2 levels.
     const currentLevel = (Math.floor(score.messages / 500));
-    if (score.level == currentLevel ) return;
+    if (score.level == currentLevel ) {
+      client.messages.set(message.author.id, score);
+      return;
+    }
     if (score.level < 1) {
       message.reply("You're halfway to becoming a regular!");
       score.level = currentLevel;
@@ -181,7 +184,6 @@ module.exports = (client) => {
       client.messages.set(message.author.id, score);
       return;
     }
-    client.messages.set(message.author.id, score);
   };
 
 
