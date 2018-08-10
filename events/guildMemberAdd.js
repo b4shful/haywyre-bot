@@ -1,7 +1,5 @@
 const Logger = require('../util/Logger');
 
-//Set IFTTT webhook key to that of the config.
-const key = config.webhookKey;
 
 /**
  * This event executes when a new member joins a server.
@@ -10,6 +8,10 @@ const key = config.webhookKey;
  * @param {Discord.Member} member A message on Discord
  */
 module.exports = (client, member) => {
+
+  //Set IFTTT webhook key to that of the config.
+  const key = client.config.webhookKey;
+
   const {
     staffChannel,
     welcomeEnabled,
@@ -17,6 +19,9 @@ module.exports = (client, member) => {
     welcomeChannel
   } = client.settings.get(member.guild.id);
 
+  //Send the Asmo meme message to a webhook which should trigger IFTTT which should trigger another webhook.
+  client.triggerIftttMakerWebhook('user_joined', key);
+  
   // If welcome is off, don't proceed (don't welcome the user)
   if (welcomeEnabled !== 'true') {
     Logger.error('Welcome message is not enabled in bot configuration.');
@@ -51,6 +56,4 @@ module.exports = (client, member) => {
     .send(message)
     .catch(Logger.error);
 
-  //Send the Asmo meme message to a webhook which should trigger IFTTT which should trigger another webhook.
-  client.triggerIftttMakerWebhook('user_joined', key);
 };

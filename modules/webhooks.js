@@ -1,9 +1,9 @@
-module.exports = () => {
+module.exports = (client) => {
 
   var http = require('http');
   var url = require('url');
 
-  function triggerIftttMakerWebhook(event, key, value1, value2, value3) {
+  client.triggerIftttMakerWebhook = (event, key, value1, value2, value3) => {
     const iftttNotificationUrl = `https://maker.ifttt.com/trigger/${event}/with/key/${key}`;
     const postData = JSON.stringify({ value1, value2, value3 });
 
