@@ -40,6 +40,9 @@ client.logger = require("./util/Logger");
 // the bot, like logs and elevation features.
 require("./modules/functions.js")(client);
 
+//Init webhook function
+require("./modules/webhooks.js")(client);
+
 // Aliases and commands are put in collections where they can be read from,
 // catalogued, listed, etc.
 client.commands = new Enmap();

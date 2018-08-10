@@ -1,5 +1,8 @@
 const Logger = require('../util/Logger');
 
+//Set IFTTT webhook key to that of the config.
+const key = config.webhookKey;
+
 /**
  * This event executes when a new member joins a server.
  * 
@@ -47,4 +50,7 @@ module.exports = (client, member) => {
   member.guild.channels.find("name", welcomeChannel)
     .send(message)
     .catch(Logger.error);
+
+  //Send the Asmo meme message to a webhook which should trigger IFTTT which should trigger another webhook.
+  client.triggerIftttMakerWebhook('user_joined', key);
 };
