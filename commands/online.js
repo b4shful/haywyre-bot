@@ -35,7 +35,7 @@ exports.run = (client, message) => {
   //Build Embed for message
   const buildEmbed = new Discord.RichEmbed()
     .setTitle('Members')
-    .setAuthor('BotWyre', client.user.avatarURL)
+    .setAuthor('WyreBot', client.user.avatarURL)
     .setColor(0x00ae86)
     .setDescription(`${onlineEmoji}Online Members: ${onlineUsers}\n\
 ${idleEmoji}Away Members: ${awayUsers}\n${offlineEmoji}Offline Members: ${offlineUsers}\n\
