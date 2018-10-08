@@ -20,7 +20,7 @@ module.exports = (client, member) => {
   } = client.settings.get(member.guild.id);
 
   //Send the Asmo meme message to a webhook which should trigger IFTTT which should trigger another webhook.
-  client.triggerIftttMakerWebhook('user_joined', key);
+  //client.triggerIftttMakerWebhook('user_joined', key);
   
   // If welcome is off, don't proceed (don't welcome the user)
   if (welcomeEnabled !== 'true') {
