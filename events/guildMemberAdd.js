@@ -10,7 +10,7 @@ const Logger = require('../util/Logger');
 module.exports = (client, member) => {
 
   //Set IFTTT webhook key to that of the config.
-  const key = client.config.webhookKey;
+  //const key = client.config.webhookKey;
 
   const {
     staffChannel,
