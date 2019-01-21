@@ -173,15 +173,14 @@ module.exports = (client) => {
       client.messages.set(message.author.id, score);
       return;
     }
-    if (score.level < 1) {
+    score.level = currentLevel;
+    if (currentLevel == 1) {
       message.reply("You're halfway to becoming a regular!");
-      score.level = currentLevel;
       client.messages.set(message.author.id, score);
       return;
     }
-    if (score.level <= 2) {
+    if (currentLevel == 2) {
       message.reply("You're now a regular, congratulations!");
-      score.level = currentLevel;
       message.member.addRole(client.config.roleIds.Regular);
       client.messages.set(message.author.id, score);
       return;
