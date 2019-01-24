@@ -17,7 +17,7 @@ const buildEmbed = (client, member) => new Discord.RichEmbed()
   .setAuthor('WyreBot', client.user.avatarURL)
   .setColor(0x00ae86)
   .setDescription(`${member} has the golden cookie!`)
-  .setFooter('This bot was ported to Haywyre by B4shful.')
+  .setFooter('This bot was made by B4shful.')
   .setThumbnail(COOKIE_IMAGE_URL);
 
 /**
